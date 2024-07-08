@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Body Type Calculator</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            background-image: url("h1_hero.png.webp");
+            color: whitesmoke;
+            font-weight: 500;
+        }
+        .calculator-form {
+          
+            margin: auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(250, 250, 250, 0.6);
+            margin-top: 140px;
+            background-color: transparent;
+        }
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        .form-control{
+            background: transparent;
+        }
+       
+    </style>
+</head>
+<body >
+
+<div class="container">
+    <form class="calculator-form ">
+        <h2 class="mb-4 text-center">Body Type Calculator</h2>
+        <div class="form-group">
+            <label for="weight">Weight (kg) :</label>
+            <input type="number" class="form-control" id="weight" placeholder="Enter weight">
+        </div>
+        <div class="form-group">
+            <label for="height">Height (cm) :</label>
+            <input type="number" class="form-control" id="height" placeholder="Enter height">
+        </div>
+        <div class="form-group">
+            <label for="age">Age :</label>
+            <input type="number" class="form-control" id="age" placeholder="Enter age">
+        </div>
+        <button type="button" class="btn btn-primary " onclick="calculateBodyType()" 
+        width: 300px >Calculate</button>
+        <div class="result" id="result"></div>
+    </form>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    function calculateBodyType() {
+        // Retrieve input values
+        var weight = parseFloat(document.getElementById('weight').value);
+        var height = parseFloat(document.getElementById('height').value);
+        var age = parseInt(document.getElementById('age').value);
+
+        // Perform body type calculation (example logic)
+        var bmi = weight / Math.pow(height / 100, 2);
+        var bodyType = '';
+
+        if (bmi < 18.5) {
+            bodyType = 'Ectomorphic';
+        } else if (bmi >= 18.5 && bmi < 25) {
+            bodyType = 'Mesomorphic';
+        } else {
+            bodyType = 'Endomorphic';
+        }
+
+        // Display the result
+        document.getElementById('result').innerText = 'Your body type is : ' + bodyType;
+    }
+</script>
+
+</body>
+</html>
